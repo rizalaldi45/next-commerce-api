@@ -1,0 +1,28 @@
+version: '5'
+services:
+  mongo_one:
+    container_name: mongo1
+    image: mongo:latest
+    command: mongod --replSet rs
+    ports:
+      - 30001:27017
+    networks:
+      - my-mongo-cluster
+  mongo_two:
+    container_name: mongo2
+    image: mongo:latest
+    command: mongod --replSet rs
+    ports:
+      - 30002:27017
+    networks:
+      - my-mongo-cluster
+  mongo_three:
+    container_name: mongo3
+    image: mongo:latest
+    command: mongod --replSet rs
+    ports:
+      - 30003:27017
+    networks:
+      - my-mongo-cluster
+networks:
+  my-mongo-cluster:
